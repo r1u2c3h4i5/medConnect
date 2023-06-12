@@ -12,15 +12,15 @@ export const getSignUpSuccess = (signUpObj) => ({
 
 export const getSignUpFailed = (error) => ({
     type: GET_SIGN_UP_FAILED,
-    payload: {error}
+    payload: { error }
 })
 
-export const getSignInRequest = (params) =>({
+export const getSignInRequest = (params) => ({
     type: GET_SIGN_IN_REQUEST,
-    payload: {params}
+    payload: { params }
 })
 
 export const getSignInSuccess = (signInObj) => ({
     type: GET_SIGN_IN_SUCCESS,
-    payload: {signInObj}
+    payload: { signInObj }
 })
