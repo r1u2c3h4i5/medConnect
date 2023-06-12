@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
 import { Button, Input, Nav, NavItem, NavLink } from 'reactstrap';
 import './Home.css';
-import Signup from '../signupLoginComponent/Signup';
+import SignUp from '../signupLoginComponent/SignUp';
+import SignIn from '../signupLoginComponent/SignIn';
 // import  {useNavigate} from 'react-router-dom';
 
 
 const Home = () => {
-    const [modal, setModal] = useState(false);
+    const [signUpModal, setSignUpModal] = useState(false);
+    const [signInModal, setSignInModal] = useState(false);
 
-    const handleSignUp = () => {
-        setModal(!modal);
+    const handleOpenSignUp = () => {
+        setSignUpModal(!signUpModal);
     }
 
-    function isSignupModalOpen(){
+    const signUpModalClose = () => {
+        setSignUpModal(!signUpModal);
+    }
 
+    const handleOpenSignIn = () => {
+        setSignInModal(!signInModal);
+    }
+
+    const signInModalClose = () => {
+        setSignInModal(!signInModal);
     }
 
     return (
@@ -39,8 +49,8 @@ const Home = () => {
                     </NavItem>
                 </Nav>
                 <div>
-                    <Button className='m-2'>LogIn</Button>
-                    <Button className='m-2' onClick={handleSignUp}>SignUp <Signup isOpen={modal} isSignupModalOpen={isSignupModalOpen} /></Button>
+                    <Button className='m-2' onClick={handleOpenSignIn}>LogIn</Button>
+                    <Button className='m-2' onClick={handleOpenSignUp}>SignUp</Button>                    
                 </div>
             </div>
             <div className='home-search d-flex justify-content-center'>
@@ -49,6 +59,9 @@ const Home = () => {
             <div className='home-screen-img'>
                 <img  className='w-75' src='/assests/images/HomeScreenImg.jpg' alt='home'></img>
             </div>
+            <SignUp isOpen={signUpModal} signUpModalClose={signUpModalClose} />
+            <SignIn isOpen={signInModal} signInModalClose={signInModalClose} />
+
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import {BrowserRouter ,Routes, Route} from "react-router-dom"
 import DoctorList from "./components/DoctorListComponent/DoctorList";
 import Home from "./components/HomeComponent/Home";
-import Signup from "./components/signupLoginComponent/Signup";
+import SignUp from "./components/signupLoginComponent/SignUp";
+import SignIn from "./components/signupLoginComponent/SignIn";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />}></Route>
 						<Route  path="/doctorList" element={<DoctorList />} ></Route>
-						<Route path="/signUp" element={<Signup />}></Route>
+						<Route path="/signUp" element={<SignUp />}></Route>
+						<Route path="/logIn" element={<SignIn />}></Route>
 				</Routes>
 			</BrowserRouter>
 			{/* <DoctorList /> */}
