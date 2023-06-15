@@ -3,6 +3,7 @@ import DoctorList from "./components/DoctorListComponent/DoctorList";
 import Home from "./components/HomeComponent/Home";
 import SignUp from "./components/signupLoginComponent/SignUp";
 import SignIn from "./components/signupLoginComponent/SignIn";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 						<Route path="/logIn" element={<SignIn />}></Route>
 				</Routes>
 			</BrowserRouter>
+			<ToastContainer />
 			{/* <DoctorList /> */}
 		</div>
 	);

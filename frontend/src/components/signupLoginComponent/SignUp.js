@@ -1,28 +1,32 @@
-import React from 'react';
-import { Button, Input, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import React, { useState } from 'react';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import './SignUp.css';
+import 'react-toastify/dist/ReactToastify.css';
+import PatientSignUp from './PatientSignUp';
+
 
 const Signup = (props) => {
+    const [patientCollapse, setPatientCollapse] = useState(false);
 
     const handleCloseBtn = () => {
         props.signUpModalClose();
+    }   
+
+    const handlePatientCollapse = () => {
+        setPatientCollapse(!patientCollapse);
     }
+
+   
     return (
         <div>
-            <Modal  isOpen={props.isOpen}  className="sign-up-modal">
+            <Modal isOpen={props.isOpen} className="sign-up-modal">
                 <ModalHeader>Register to MedConnect</ModalHeader>
                 <ModalBody className='m-2 p-2'>
-                    <label>Firstname</label>
-                    <Input className='mb-3' type="text"></Input>
-                    <label>Lastname</label>
-                    <Input className='mb-3' type="text"></Input>
-                    <label>Email</label>
-                    <Input className='mb-3' type="text"></Input>
-                    <label>Password</label>
-                    <Input className='mb-3' type="text"></Input>
+                    <Button className='me-3'>Doctor</Button>
+                    <Button onClick={handlePatientCollapse}>Patient</Button>
+                    <PatientSignUp collapse={patientCollapse} handlePatientCollapse={handlePatientCollapse}/>               
                 </ModalBody>
                 <ModalFooter>
-                    <Button>Register</Button>
                     <Button onClick={handleCloseBtn}>Cancel</Button>
                 </ModalFooter>
             </Modal>

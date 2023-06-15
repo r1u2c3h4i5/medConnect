@@ -1,26 +1,17 @@
-import { GET_SIGN_IN_REQUEST, GET_SIGN_IN_SUCCESS, GET_SIGN_UP_FAILED, GET_SIGN_UP_REQUEST, GET_SIGN_UP_SUCCESS } from "./actionConstants";
+import { GET_PATIENT_SIGN_UP_FAILED, GET_PATIENT_SIGN_UP_REQUEST, GET_PATIENT_SIGN_UP_SUCCESS } from "./actionConstants";
 
-export const getSignUpRequest = (params) => ({
-    type: GET_SIGN_UP_REQUEST,
+export const getPatientSignUpRequest = (params) => ({
+    type: GET_PATIENT_SIGN_UP_REQUEST,
     payload: {params}
 })
 
-export const getSignUpSuccess = (signUpObj) => ({
-    type: GET_SIGN_UP_SUCCESS,
-    payload: {signUpObj}
+export const getPatientSignUpSuccess = (patientSignUpObj) => ({
+    type: GET_PATIENT_SIGN_UP_SUCCESS,
+    payload: {patientSignUpObj}
 })
 
-export const getSignUpFailed = (error) => ({
-    type: GET_SIGN_UP_FAILED,
+export const getPatientSignUpFailed = (error) => ({
+    type: GET_PATIENT_SIGN_UP_FAILED,
     payload: { error }
 })
 
-export const getSignInRequest = (params) => ({
-    type: GET_SIGN_IN_REQUEST,
-    payload: { params }
-})
-
-export const getSignInSuccess = (signInObj) => ({
-    type: GET_SIGN_IN_SUCCESS,
-    payload: { signInObj }
-})
