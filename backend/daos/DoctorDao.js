@@ -1,10 +1,10 @@
 const DoctorSchema = require('../schemas/Doctor');
 
 module.exports = {
-    // saveNewDoctor: async () =>{
-    //     let new = new DoctorSchema();
-    //     return await newUserUpdate.save();
-    // }
+    saveNewDoctor: async (newDoctorObj) =>{
+        const newUserUpdate = new DoctorSchema(newDoctorObj);
+        return await newUserUpdate.save();
+    },
     getDoctorsList: async () => {
         try{
             let query = {};
@@ -12,6 +12,13 @@ module.exports = {
             return doctorList;    
         } catch (error){
             throw error
+        }
+    },
+    findByEmail: async (email) => {
+        try{
+            return await DoctorSchema.findOne({email: email});
+        } catch(error){
+            throw error;
         }
     }
 }

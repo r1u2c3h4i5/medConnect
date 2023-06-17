@@ -1,22 +1,19 @@
-const {  GET_PATIENT_SIGN_UP_SUCCESS, GET_PATIENT_SIGN_UP_FAILED } = require("../actions/actionConstants")
+import { getUserSignInFailed, getUserSignInSuccess } from "../actions/userAction";
 
-const userReducer = (state= {}, action) => {
+ const userReducer = (state= {}, action) => {
     switch(action.type){
-        case GET_PATIENT_SIGN_UP_SUCCESS:{
+        case getUserSignInSuccess: {
             return {
                 ...state,
-                patientSignUp: action.payload.patientSignUpObj
+                signIn: action.payload.signInObj 
             }
         }
-       case GET_PATIENT_SIGN_UP_FAILED:{
-        return{
-            ...state,
-            errorMessage: action.payload.error
+        case getUserSignInFailed: {
+            return {
+                ...state,
+                error: action.payload.errorMessage
+            }
         }
-       }
-       default: {
-            return state;
-       }
     }
 }
 

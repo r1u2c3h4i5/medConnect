@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Input, Nav, NavItem, NavLink } from 'reactstrap';
+import { Input, Nav, NavItem, NavLink } from 'reactstrap';
 import './Home.css';
 import SignUp from '../signupLoginComponent/SignUp';
 import SignIn from '../signupLoginComponent/SignIn';
-// import  {useNavigate} from 'react-router-dom';
+import Button from '@mui/material/Button';
+
 
 
 const Home = () => {
@@ -49,8 +50,8 @@ const Home = () => {
                     </NavItem>
                 </Nav>
                 <div>
-                    <Button className='m-2' onClick={handleOpenSignIn}>LogIn</Button>
-                    <Button className='m-2' onClick={handleOpenSignUp}>SignUp</Button>                    
+                    <Button variant='contained' className='m-2' onClick={handleOpenSignIn}>LogIn</Button>
+                    <Button variant='contained' className='m-2' onClick={handleOpenSignUp}>SignUp</Button>                    
                 </div>
             </div>
             <div className='home-search d-flex justify-content-center'>

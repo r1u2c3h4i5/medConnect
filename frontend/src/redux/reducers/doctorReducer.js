@@ -1,4 +1,4 @@
-import { GET_DOCTOR_LIST_FAILED, GET_DOCTOR_LIST_SUCCESS } from "../actions/actionConstants";
+import { GET_DOCTOR_LIST_FAILED, GET_DOCTOR_LIST_SUCCESS, GET_DOCTOR_SIGN_UP_FAILED, GET_DOCTOR_SIGN_UP_SUCCESS } from "../actions/actionConstants";
 
 const doctorReducer = (state = {}, action) => {
     switch(action.type){
@@ -14,6 +14,18 @@ const doctorReducer = (state = {}, action) => {
                 error: action.payload.error
             }
         }
+        case GET_DOCTOR_SIGN_UP_SUCCESS:{
+            return {
+                ...state,
+                doctorSignUp: action.payload.doctorSignUpObj
+            }
+        }
+       case GET_DOCTOR_SIGN_UP_FAILED:{
+        return{
+            ...state,
+            errorMessage: action.payload.error
+        }
+       }
         default: {
             return state;
         }

@@ -1,7 +1,7 @@
 const doctorController = require('../controllers/DoctorController');
-const userController = require('../controllers/UserController');
+const patientController = require('../controllers/PatientController');
 
 module.exports = app => {
     app.use('/doctor', doctorController);
-    app.use('/user', userController);
+    app.use('/patient', patientController);
 }

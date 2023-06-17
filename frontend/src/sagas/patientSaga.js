@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getPatientSignUpFailed, getPatientSignUpSuccess } from "../redux/actions/userAction";
-import { patientSignUpApiCall } from "../apis/userApi";
+import { getPatientSignUpFailed, getPatientSignUpSuccess } from "../redux/actions/patientAction";
+import { patientSignUpApiCall } from "../apis/patientApi";
 import { GET_PATIENT_SIGN_UP_REQUEST } from "../redux/actions/actionConstants";
 
 const REACT_APP_REST_API_URL = "http://localhost:8000";
