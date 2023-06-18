@@ -10,7 +10,7 @@ const PatientSignUp = () => {
     const dispatch = useDispatch();
     let signUpSuccessMessage = useSelector(state => state.patient.patientSignUp?.message);
     let signUpFailedMessage = useSelector(state => state.patient.errorMessage?.message)
-
+ 
     const [signUpInput, setSignInInput] = useState({ firstName: "", lastName: "", email: "", password: "" });
 
     const handleInputText = (target) => {
@@ -68,7 +68,7 @@ const PatientSignUp = () => {
             <label>Email</label>
             <Input
                 className='mb-3'
-                type="text"
+                type="email"
                 name='email'
                 value={signUpInput.email}
                 onChange={(e) => handleInputText(e.target)}
@@ -76,7 +76,7 @@ const PatientSignUp = () => {
             <label>Password</label>
             <Input
                 className='mb-3'
-                type="text"
+                type="password"
                 name='password'
                 value={signUpInput.password}
                 onChange={(e) => handleInputText(e.target)}

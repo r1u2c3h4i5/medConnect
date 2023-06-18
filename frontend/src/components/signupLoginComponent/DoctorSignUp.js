@@ -11,7 +11,8 @@ import { Button } from "@mui/material";
 const DoctorSignUp = () => {
     const dispatch = useDispatch();
     let signUpSuccessMessage = useSelector(state => state.doctor.doctorSignUp?.message);
-    let signUpFailedMessage = useSelector(state => state.doctor.doctorSignUp?.message)
+    let signUpFailedMessage = useSelector(state => state.doctor.errorMessage?.message)
+    console.log(signUpFailedMessage, "error");
     const [signUpInput, setSignInInput] = useState({
         firstName: "", lastName: "", email: "",
         password: "", qualification: "", specialization: "", contactNo: ""
@@ -34,7 +35,7 @@ const DoctorSignUp = () => {
     useEffect(() => {
         if (signUpSuccessMessage) {
             toast.success(signUpSuccessMessage, {
-                position: "top-center",
+                position: "top-center",  
                 autoClose: 3000,
                 hideProgressBar: true,
                 closeOnClick: true,
@@ -72,7 +73,7 @@ const DoctorSignUp = () => {
                     <label>Email</label>
                     <Input
                         className='mb-3'
-                        type="text"
+                        type="email"
                         name='email'
                         value={signUpInput.email}
                         onChange={(e) => handleInputText(e.target)}

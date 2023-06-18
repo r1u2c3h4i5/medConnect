@@ -4,6 +4,7 @@ import './Home.css';
 import SignUp from '../signupLoginComponent/SignUp';
 import SignIn from '../signupLoginComponent/SignIn';
 import Button from '@mui/material/Button';
+import Cards from '../Cards';
 
 
 
@@ -60,6 +61,10 @@ const Home = () => {
             <div className='home-screen-img'>
                 <img  className='w-75' src='/assests/images/HomeScreenImg.jpg' alt='home'></img>
             </div>
+            <div className='cards'>
+                <Cards />
+                <Cards />
+            </div>
             <SignUp isOpen={signUpModal} signUpModalClose={signUpModalClose} />
             <SignIn isOpen={signInModal} signInModalClose={signInModalClose} />
 
@@ -68,3 +73,4 @@ const Home = () => {
 }
 
 export default Home;
+

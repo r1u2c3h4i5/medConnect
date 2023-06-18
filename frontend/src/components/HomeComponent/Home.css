@@ -3,5 +3,9 @@
     /* margin-top: 140px; */
 }
 .home-search{
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.cards{
+    display: inline-flex;
+    
 }

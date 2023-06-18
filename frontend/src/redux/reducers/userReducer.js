@@ -11,7 +11,7 @@ import { GET_USER_SIGN_IN_FAILED, GET_USER_SIGN_IN_SUCCESS } from "../actions/ac
         case GET_USER_SIGN_IN_FAILED: {
             return {
                 ...state,
-                error: action.payload.errorMessage
+                errorMessage: action.payload.errorMessage
             }
         }
         default: {
