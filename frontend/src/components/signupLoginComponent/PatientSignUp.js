@@ -8,8 +8,8 @@ import { Button } from "@mui/material";
 
 const PatientSignUp = () => {
     const dispatch = useDispatch();
-    let signUpSuccessMessage = useSelector(state => state.user.patientSignUp?.message);
-    let signUpFailedMessage = useSelector(state => state.user.errorMessage?.message)
+    let signUpSuccessMessage = useSelector(state => state.patient.patientSignUp?.message);
+    let signUpFailedMessage = useSelector(state => state.patient.errorMessage?.message)
 
     const [signUpInput, setSignInInput] = useState({ firstName: "", lastName: "", email: "", password: "" });
 

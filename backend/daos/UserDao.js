@@ -1,7 +1,7 @@
 const User = require('../schemas/User');
 
 module.exports = {
-    findRegiterUser: async (email) => {
+    findByEmail: async (email) => {
         try {
             const isUserExits = await User.findOne({ email: email });
             return isUserExits;

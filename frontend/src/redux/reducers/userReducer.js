@@ -1,19 +1,22 @@
-import { getUserSignInFailed, getUserSignInSuccess } from "../actions/userAction";
+import { GET_USER_SIGN_IN_FAILED, GET_USER_SIGN_IN_SUCCESS } from "../actions/actionConstants";
 
  const userReducer = (state= {}, action) => {
     switch(action.type){
-        case getUserSignInSuccess: {
+        case GET_USER_SIGN_IN_SUCCESS: {
             return {
                 ...state,
                 signIn: action.payload.signInObj 
             }
         }
-        case getUserSignInFailed: {
+        case GET_USER_SIGN_IN_FAILED: {
             return {
                 ...state,
                 error: action.payload.errorMessage
             }
         }
+        default: {
+            return state;
+       }
     }
 }
 

@@ -8,10 +8,10 @@ import { Button } from "@mui/material";
 
 
 
-const DoctorSignUp = (props) => {
+const DoctorSignUp = () => {
     const dispatch = useDispatch();
-    let signUpSuccessMessage = useSelector(state => state.user.patientSignUp);
-    let signUpFailedMessage = useSelector(state => state.user.errorMessage)
+    let signUpSuccessMessage = useSelector(state => state.doctor.doctorSignUp?.message);
+    let signUpFailedMessage = useSelector(state => state.doctor.doctorSignUp?.message)
     const [signUpInput, setSignInInput] = useState({
         firstName: "", lastName: "", email: "",
         password: "", qualification: "", specialization: "", contactNo: ""
@@ -33,16 +33,16 @@ const DoctorSignUp = (props) => {
 
     useEffect(() => {
         if (signUpSuccessMessage) {
-            toast.success(signUpSuccessMessage?.message, {
+            toast.success(signUpSuccessMessage, {
                 position: "top-center",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: true,
                 closeOnClick: true,
             })
         } else {
-            toast.error(signUpFailedMessage?.message, {
+            toast.error(signUpFailedMessage, {
                 position: "top-center",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: true,
                 closeOnClick: true,
             })

@@ -1,11 +1,16 @@
 import React from 'react';
 import { Button, Input, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import './SignIn.css';
+import { useDispatch } from 'react-redux';
 
 const SignIn = (props) => {
-
+    const dispatch = useDispatch();
     const handleCloseBtn = () => {
         props.signInModalClose();
+    }
+
+    const handleLogInbtn = () => {
+        
     }
     return (
         <div>
@@ -18,7 +23,7 @@ const SignIn = (props) => {
                     <Input className='mb-3' type="text"></Input>
                 </ModalBody>
                 <ModalFooter>
-                    <Button>LogIn</Button>
+                    <Button onClick={handleLogInbtn}>LogIn</Button>
                     <Button onClick={handleCloseBtn}>Cancel</Button>
                 </ModalFooter>
             </Modal>

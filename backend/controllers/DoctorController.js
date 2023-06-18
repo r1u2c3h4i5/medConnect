@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const DoctorService = require('../services/DoctorService');
 const jwt = require('jsonwebtoken');
+const userService = require('../services/UserService');
 
-router.post('/register', async(req, res) => {
+router.post('/doctorRegister', async(req, res) => {
     try{
         const{firstName, lastName,email,password, qualification, specialization,  contactNo } = req.body;
         if(firstName && lastName && email && password && qualification && specialization  && contactNo){
@@ -11,12 +12,15 @@ router.post('/register', async(req, res) => {
             if(!isDoctorExits){
                 const newDoctor = await DoctorService.saveNewDoctor(req.body);
                 const token = jwtTokenVerifyFunction({id: newDoctor._id, email: newDoctor.email});
-                res.status(200).json({error: false, message: "SignUp Sucessfully",newDoctor, token });
+                let newDoctorWithRole = newDoctor.toObject();
+                newDoctorWithRole["role"] = "doctor";
+                userService.saveNewUser(newDoctorWithRole);
+                res.status(200).json({message: "SignUp Sucessfully",newDoctor, token });
             } else {
-                res.send({error: true, message: "Doctor is already exists please login"});
+                res.send({ message: "Doctor is already exists please login"});
             }
         } else {
-            res.send({error: true, message: "All input is required"});
+            res.send({ message: "All input is required"});
         }
     } catch(error){ 
         console.log('inside doctorController-> register'. error);
