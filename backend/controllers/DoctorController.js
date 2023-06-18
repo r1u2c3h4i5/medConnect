@@ -9,7 +9,8 @@ router.post('/doctorRegister', async(req, res) => {
         const{firstName, lastName,email,password, qualification, specialization,  contactNo } = req.body;
         if(firstName && lastName && email && password && qualification && specialization  && contactNo){
             const isDoctorExits = await DoctorService.findByEmail(email);
-            if(!isDoctorExits){
+            const isUserExits = await userService.findUserByEmail(email);
+            if(!isDoctorExits && !isUserExits){
                 const newDoctor = await DoctorService.saveNewDoctor(req.body);
                 const token = jwtTokenVerifyFunction({id: newDoctor._id, email: newDoctor.email});
                 let newDoctorWithRole = newDoctor.toObject();
@@ -17,20 +18,16 @@ router.post('/doctorRegister', async(req, res) => {
                 userService.saveNewUser(newDoctorWithRole);
                 res.status(200).json({message: "SignUp Sucessfully",newDoctor, token });
             } else {
-                res.send({ message: "Doctor is already exists please login"});
+                res.send({ error: true, message: "Doctor is already exists please login"});
             }
         } else {
-            res.send({ message: "All input is required"});
+            res.send({ error: true,message: "All input is required"});
         }
     } catch(error){ 
         console.log('inside doctorController-> register'. error);
         throw error;
     }
 })
-
-
-
-
 
 
 

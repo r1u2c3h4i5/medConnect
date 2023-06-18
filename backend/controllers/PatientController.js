@@ -8,9 +8,10 @@ router.post('/patientRegister', async (req, res) => {
     try {
         const{firstName, lastName, email,password} = req.body;
         if (firstName && lastName && email && password) {
-            const isUserExits = await patientService.findRegisterPatient(email);
-            if(isUserExits){
-                res.send({  message: "User is already exists, please login"});
+            const isPatientExits = await patientService.findRegisterPatient(email);
+            const isUserExits = await userService.findUserByEmail(email);
+            if(isUserExits || isPatientExits ){
+                res.send({ error:true ,message: "User is already exists, please login"});
             }else{
                 let newPatient = await patientService.saveNewPatient(req.body);
                 const token = jwtTokenVerifyFunction({ id: newPatient._id, email: newPatient.email });
@@ -20,7 +21,7 @@ router.post('/patientRegister', async (req, res) => {
                 res.status(200).json({ message: "SignUp Sucessfully", newPatient, token});        
             }
         }else {
-            res.send({ message: "All input is required"});
+            res.send({error: true, message: "All input is required"});
         } 
         
     } catch(error){
